@@ -87,7 +87,7 @@ const InviteUsersView = ({ route, navigation }: IInviteUsersViewProps): ReactEle
 		<SafeAreaView style={{ backgroundColor: colors.surfaceRoom }}>
 			<ScrollView {...scrollPersistTaps} style={{ backgroundColor: colors.surfaceHover }} showsVerticalScrollIndicator={false}>
 				<View style={styles.innerContainer}>
-					<FormTextInput label={I18n.t('Invite_Link')} value={invite && invite.url} editable={false} />
+					<FormTextInput label={I18n.t('Invite_Link')} value={invite && invite.url} editable={false} multiline scrollEnabled={false} />
 					{renderExpiration()}
 					<View style={[styles.divider, { backgroundColor: colors.strokeLight }]} />
 					<Button title={I18n.t('Share_Link')} type='primary' onPress={share} />
