@@ -50,4 +50,16 @@ describe('FormTextInput', () => {
 		const component = await findByText(error.reason);
 		expect(component).toBeTruthy();
 	});
+
+	test('should render a long read-only value as a wrapping multiline input', async () => {
+		const url = `https://go.rocket.chat/invite?host=open.rocket.chat&path=invite%2F${'a'.repeat(120)}`;
+		const { findByTestId } = render(
+			<FormTextInput testID={FormTextInputID} value={url} editable={false} multiline scrollEnabled={false} />
+		);
+		const component = await findByTestId(FormTextInputID);
+		expect(component.props.value).toBe(url);
+		expect(component.props.multiline).toBe(true);
+		expect(component.props.scrollEnabled).toBe(false);
+		expect(component.props.editable).toBe(false);
+	});
 });
