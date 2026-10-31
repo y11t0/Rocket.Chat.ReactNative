@@ -35,6 +35,13 @@ describe('FormTextInput', () => {
 		expect(component).toBeTruthy();
 	});
 
+	test('should pass multiline and scrollEnabled props to the input', async () => {
+		const { findByTestId } = render(<FormTextInput testID={FormTextInputID} editable={false} multiline scrollEnabled={false} />);
+		const component = await findByTestId(FormTextInputID);
+		expect(component.props.multiline).toBe(true);
+		expect(component.props.scrollEnabled).toBe(false);
+		expect(component.props.editable).toBe(false);
+	});
 	test('should render the component with label', async () => {
 		const { findByText } = render(<FormTextInput testID={FormTextInputID} label='form text input' />);
 		const component = await findByText('form text input');
